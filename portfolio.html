@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精选作品 | 家禾摄影</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar scrolled">
+        <div class="nav-brand">家禾摄影</div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="portfolio.html" class="active">作品</a>
+            <a href="index.html#about">关于</a>
+            <a href="index.html#contact">联系</a>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- 作品展示 -->
+    <section class="portfolio-page">
+        <div class="section-header">
+            <h2>精选作品</h2>
+            <p>每一帧都是故事</p>
+        </div>
+
+        <!-- 分类筛选 -->
+        <div class="portfolio-filter">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="anime">二次元外景</button>
+            <button class="filter-btn" data-filter="wide">广角</button>
+            <button class="filter-btn" data-filter="scene">场照</button>
+            <button class="filter-btn" data-filter="art">艺术照</button>
+        </div>
+
+        <!-- 作品网格 -->
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- 作品图片将通过 JavaScript 动态加载 -->
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">家禾摄影</div>
+            <p>用镜头记录爱与美</p>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="portfolio.html">作品</a>
+                <a href="index.html#about">关于</a>
+                <a href="index.html#contact">联系</a>
+            </div>
+            <p class="copyright">© 2026 家禾摄影工作室. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 图片灯箱 -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close">&times;</button>
+        <button class="lightbox-prev">&lsaquo;</button>
+        <button class="lightbox-next">&rsaquo;</button>
+        <img src="" alt="放大图片">
+    </div>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>
