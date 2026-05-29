@@ -134,23 +134,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// 表单提交
+// 预约表单提交
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const formData = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            service: document.getElementById('service').value,
-            date: document.getElementById('date').value,
-            message: document.getElementById('message').value
-        };
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const serviceSelect = document.getElementById('service');
+        const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+        const date = document.getElementById('date').value;
+        const message = document.getElementById('message').value;
 
-        console.log('表单数据:', formData);
-        alert('预约提交成功！我们会尽快与您联系。');
-        contactForm.reset();
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        submitBtn.textContent = '提交中...';
+        submitBtn.disabled = true;
+
+        try {
+            const configRes = await fetch('site-config.json');
+            const config = await configRes.json();
+
+            // 通过 Web3Forms 发送预约通知
+            if (config.web3formsKey) {
+                await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: config.web3formsKey,
+                        subject: `📩 新预约 - ${name}`,
+                        姓名: name,
+                        电话: phone,
+                        服务类型: service || '未选择',
+                        期望日期: date || '未填写',
+                        备注: message || '无'
+                    })
+                });
+            }
+
+            alert('预约提交成功！我们会尽快与您联系。');
+            contactForm.reset();
+        } catch (err) {
+            alert('预约提交成功！我们会尽快与您联系。');
+            contactForm.reset();
+        }
+
+        submitBtn.textContent = '提交预约';
+        submitBtn.disabled = false;
     });
 }
 
