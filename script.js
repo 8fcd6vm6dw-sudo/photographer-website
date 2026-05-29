@@ -226,7 +226,85 @@ document.querySelectorAll('.stat, .contact-item').forEach(el => {
     scrollObserver.observe(el);
 });
 
+// 加载网站配置
+function loadSiteConfig() {
+    fetch('site-config.json')
+        .then(res => res.json())
+        .then(config => {
+            // 导航品牌
+            const navBrand = document.querySelector('.nav-brand');
+            if (navBrand && config.brand) navBrand.textContent = config.brand;
+
+            // 首页标题
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle && config.heroTitle) {
+                const lines = config.heroTitle.split('\n');
+                heroTitle.innerHTML = lines.map(l => `<span class="title-line">${l}</span>`).join('');
+            }
+
+            // 首页副标题
+            const heroSub = document.querySelector('.hero-subtitle');
+            if (heroSub && config.heroSubtitle) heroSub.textContent = config.heroSubtitle;
+
+            // 关于标题
+            const aboutTitle = document.querySelector('.about-content h2');
+            if (aboutTitle && config.aboutTitle) aboutTitle.textContent = config.aboutTitle;
+
+            // 关于简介
+            const aboutIntro = document.querySelector('.about-intro');
+            if (aboutIntro && config.aboutIntro) aboutIntro.textContent = config.aboutIntro;
+
+            // 关于描述
+            const aboutPs = document.querySelectorAll('.about-content > p:not(.about-intro)');
+            if (aboutPs[0] && config.aboutDesc) aboutPs[0].textContent = config.aboutDesc;
+            if (aboutPs[1] && config.aboutDesc2) aboutPs[1].textContent = config.aboutDesc2;
+
+            // 统计数据
+            const statNums = document.querySelectorAll('.stat-number');
+            const statLabels = document.querySelectorAll('.stat-label');
+            if (statNums[0] && config.statClients) statNums[0].textContent = config.statClients;
+            if (statLabels[0] && config.statClientsLabel) statLabels[0].textContent = config.statClientsLabel;
+            if (statNums[1] && config.statYears) statNums[1].textContent = config.statYears;
+            if (statLabels[1] && config.statYearsLabel) statLabels[1].textContent = config.statYearsLabel;
+
+            // 服务项目
+            const serviceList = document.querySelector('.about-services ul');
+            if (serviceList && config.services) {
+                serviceList.innerHTML = config.services.map(s => `<li>${s}</li>`).join('');
+            }
+
+            // 联系区域
+            const contactTitle = document.querySelector('.contact-info h2');
+            if (contactTitle && config.contactTitle) contactTitle.textContent = config.contactTitle;
+
+            const contactDesc = document.querySelector('.contact-info > p');
+            if (contactDesc && config.contactDesc) contactDesc.textContent = config.contactDesc;
+
+            // 联系方式
+            const contactItems = document.querySelectorAll('.contact-item p');
+            if (contactItems[0] && config.phone) contactItems[0].textContent = config.phone;
+            if (contactItems[1] && config.email) contactItems[1].textContent = config.email;
+            if (contactItems[2] && config.wechat) contactItems[2].textContent = config.wechat;
+            if (contactItems[3] && config.workHours) contactItems[3].textContent = config.workHours;
+
+            // 页脚
+            const footerBrand = document.querySelector('.footer-brand');
+            if (footerBrand && config.brand) footerBrand.textContent = config.brand;
+
+            const footerP = document.querySelector('.footer-content > p:not(.copyright)');
+            if (footerP && config.footerText) footerP.textContent = config.footerText;
+
+            const copyright = document.querySelector('.copyright');
+            if (copyright && config.copyright) copyright.textContent = config.copyright;
+
+            // 页面标题
+            if (config.brand) document.title = config.brand + ' | 人像婚纱摄影';
+        })
+        .catch(() => {});
+}
+
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
+    loadSiteConfig();
     loadHeroSlider();
 });
