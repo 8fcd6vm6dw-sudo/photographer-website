@@ -1,7 +1,6 @@
 {
     "hero": [
         "images/hero/DSCF0535.JPG",
-        "images/hero/_DSC7571-%E5%B7%B2%E5%A2%9E%E5%BC%BANR-4%20%E6%8B%B7%E8%B4%9D%202.JPG",
         "images/hero/_DSC4837.jpg"
     ],
     "portfolio": [
@@ -140,5 +139,6 @@
             "name": "艺术照",
             "category": "art"
         }
-    ]
+    ],
+    "_sha": "c606cad38e78eddc901ce6ca345ad4f3aa58703f"
 }
