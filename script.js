@@ -53,7 +53,7 @@ function loadHeroSlider() {
     const heroSection = document.getElementById('home');
     if (!heroSlider || !heroSection) return;
 
-    fetch('images.json')
+    fetch('images.json?t=' + Date.now())
         .then(res => res.json())
         .then(data => {
             const heroImages = data.hero || [];
@@ -258,7 +258,7 @@ document.querySelectorAll('.stat, .contact-item').forEach(el => {
 
 // 加载网站配置
 function loadSiteConfig() {
-    fetch('site-config.json')
+    fetch('site-config.json?t=' + Date.now())
         .then(res => res.json())
         .then(config => {
             // 导航品牌

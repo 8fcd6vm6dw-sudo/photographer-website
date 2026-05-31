@@ -3,7 +3,7 @@ function loadPortfolio() {
     const portfolioGrid = document.getElementById('portfolioGrid');
     if (!portfolioGrid) return;
 
-    fetch('images.json')
+    fetch('images.json?t=' + Date.now())
         .then(res => res.json())
         .then(data => {
             const portfolioImages = data.portfolio || [];
