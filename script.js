@@ -280,6 +280,10 @@ function loadSiteConfig() {
             const aboutTitle = document.querySelector('.about-content h2');
             if (aboutTitle && config.aboutTitle) aboutTitle.textContent = config.aboutTitle;
 
+            // 关于照片
+            const aboutImg = document.querySelector('.about-image img');
+            if (aboutImg && config.aboutImage) aboutImg.src = config.aboutImage;
+
             // 关于简介
             const aboutIntro = document.querySelector('.about-intro');
             if (aboutIntro && config.aboutIntro) aboutIntro.textContent = config.aboutIntro;
