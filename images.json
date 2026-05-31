@@ -1,7 +1,8 @@
 {
     "hero": [
         "images/hero/DSCF0535.JPG",
-        "images/hero/2.jpg"
+        "images/hero/2.jpg",
+        "images/hero/3.jpg"
     ],
     "portfolio": [
         {
@@ -140,5 +141,5 @@
             "category": "art"
         }
     ],
-    "_sha": "d639151c92334699fc4555b66af6c70357f0624e"
+    "_sha": "19df72c31f9d8fc26431bb08434f293fd60ae61e"
 }
